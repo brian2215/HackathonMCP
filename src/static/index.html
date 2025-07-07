@@ -15,8 +15,16 @@
     <main>
       <section id="activities-container">
         <h3>Available Activities</h3>
+        <div class="toolbar">
+          <select id="sortOptions">
+            <option value="name">Sort by Name</option>
+            <option value="date">Sort by Date</option>
+          </select>
+          <input type="text" id="searchBar" placeholder="Search activities" />
+          <button id="applyFiltersButton">Apply</button>
+        </div>
         <div id="activities-list">
-          <!-- Activities will be loaded here -->
+          <!-- Activities will be loaded here dynamically -->
           <p>Loading activities...</p>
         </div>
       </section>
@@ -26,7 +34,12 @@
         <form id="signup-form">
           <div class="form-group">
             <label for="email">Student Email:</label>
-            <input type="email" id="email" required placeholder="your-email@mergington.edu" />
+            <input
+              type="email"
+              id="email"
+              required
+              placeholder="your-email@mergington.edu"
+            />
           </div>
           <div class="form-group">
             <label for="activity">Select Activity:</label>

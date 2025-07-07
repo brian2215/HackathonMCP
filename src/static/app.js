@@ -155,6 +155,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  async function applyFilters() {
+    const sortBy = document.getElementById('sortOptions').value;
+    const search = document.getElementById('searchBar').value;
+
+    try {
+      const response = await fetch(`/activities?sortBy=${sortBy}&search=${search}`);
+      const data = await response.json();
+
+      const activityContainer = document.getElementById('activities-list');
+      activityContainer.innerHTML = '';
+
+      data.forEach(activity => {
+        const card = document.createElement('div');
+        card.className = 'activity-card';
+        card.innerHTML = `<h3>${activity.name}</h3><p>${activity.description}</p>`;
+        activityContainer.appendChild(card);
+      });
+    } catch (error) {
+      console.error('Error fetching activities:', error);
+    }
+  }
+
+  document.getElementById('applyFiltersButton').addEventListener('click', applyFilters);
+
   // Initialize app
   fetchActivities();
 });
